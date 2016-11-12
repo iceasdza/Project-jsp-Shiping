@@ -7,6 +7,7 @@ package Model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -17,15 +18,10 @@ import java.util.logging.Logger;
  * @author patiz
  */
 public class Ships {
-private int ship_Id;
-private String  shipName;
-private String shipType;
-private String loadRank;
-private String 	DisplacementTonnage;
-
-    public int getShip_Id() {
-        return ship_Id;
-    }
+    private String shipName;
+    private String shipType;
+    private String displacement;
+    private int expen;
 
     public String getShipName() {
         return shipName;
@@ -35,16 +31,12 @@ private String 	DisplacementTonnage;
         return shipType;
     }
 
-    public String getLoadRank() {
-        return loadRank;
+    public String getDisplacement() {
+        return displacement;
     }
 
-    public String getDisplacementTonnage() {
-        return DisplacementTonnage;
-    }
-
-    public void setShip_Id(int ship_Id) {
-        this.ship_Id = ship_Id;
+    public int getExpen() {
+        return expen;
     }
 
     public void setShipName(String shipName) {
@@ -55,27 +47,39 @@ private String 	DisplacementTonnage;
         this.shipType = shipType;
     }
 
-    public void setLoadRank(String loadRank) {
-        this.loadRank = loadRank;
+    public void setDisplacement(String displacement) {
+        this.displacement = displacement;
     }
 
-    public void setDisplacementTonnage(String DisplacementTonnage) {
-        this.DisplacementTonnage = DisplacementTonnage;
+    public void setExpen(int expen) {
+        this.expen = expen;
     }
-
-    public static ArrayList<Ships> shipsInfo(String name){
-        
-         ArrayList<Ships> ship = new ArrayList<>();
-    try {
+    
+    
+    
+   public void  addShipInfo(String shipname,String type,String displacement,int expen){
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            String sqlcmd = "INSERT INTO ship(shipName,shipType,DisplacementTonnage,expenses) VALUES (?,?,?,?)";
+//            PreparedStatement pstm = con.prepareStatement("INSERT INTO 'ship' (shipName,shipType,DisplacementTonnage,expenses) values (?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement(sqlcmd);
+            pstm.setString(1, shipname);
+            pstm.setString(2, type);
+            pstm.setString(3, displacement);
+            pstm.setInt(4, expen);
+            pstm.executeUpdate();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Ships.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+   }
+    
+    public static void main(String[] args) throws SQLException {
+        Ships ship = new Ships();
         Connection con = ConnectionBuidler.getConnection();
-        
-        PreparedStatement pstm = con.prepareStatement("");
-        return  ship;
-    } catch (SQLException ex) {
-        Logger.getLogger(Ships.class.getName()).log(Level.SEVERE, null, ex);
+        ship.addShipInfo("test", "test", "5000000hp", 23456);
+        System.out.println(con);
+                
     }
-    return  ship;
-       
-    }
-
 }
