@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class Ships {
     private String shipName;
     private String shipType;
-    private String displacement;
+    private int displacement;
     private int expen;
 
     public String getShipName() {
@@ -31,7 +31,7 @@ public class Ships {
         return shipType;
     }
 
-    public String getDisplacement() {
+    public int getDisplacement() {
         return displacement;
     }
 
@@ -47,7 +47,7 @@ public class Ships {
         this.shipType = shipType;
     }
 
-    public void setDisplacement(String displacement) {
+    public void setDisplacement(int displacement) {
         this.displacement = displacement;
     }
 
@@ -57,15 +57,15 @@ public class Ships {
     
     
     
-   public void  addShipInfo(String shipname,String type,String displacement,int expen){
+   public void  addShipInfo(String shipname,String type,int displacement,int expen){
         try {
             Connection con = ConnectionBuidler.getConnection();
-            String sqlcmd = "INSERT INTO ship(shipName,shipType,DisplacementTonnage,expenses) VALUES (?,?,?,?)";
+            String sqlcmd = "INSERT INTO ship(shipName,shipType,Displacement,expenses) VALUES (?,?,?,?)";
 //            PreparedStatement pstm = con.prepareStatement("INSERT INTO 'ship' (shipName,shipType,DisplacementTonnage,expenses) values (?,?,?,?)");
             PreparedStatement pstm = con.prepareStatement(sqlcmd);
             pstm.setString(1, shipname);
             pstm.setString(2, type);
-            pstm.setString(3, displacement);
+            pstm.setInt(3, displacement);
             pstm.setInt(4, expen);
             pstm.executeUpdate();
             con.close();
@@ -74,12 +74,32 @@ public class Ships {
         }
       
    }
+   
+   public static Ships findById(int id) throws SQLException{
+       Ships s = new Ships();
+       Connection con = ConnectionBuidler.getConnection();
+       PreparedStatement pstm = con.prepareStatement("select * from SHIP where shipid = ?");
+       pstm.setInt(1, id);
+       ResultSet rs = pstm.executeQuery();
+       while(rs.next()){
+           s.shipName = rs.getString("shipName");
+           s.shipType = rs.getString("shipType");
+           s.displacement = rs.getInt("Displacement");
+           s.expen = rs.getInt("expenses");
+       }
+       con.close();
+       
+       return  s;
+   }
     
     public static void main(String[] args) throws SQLException {
-        Ships ship = new Ships();
-        Connection con = ConnectionBuidler.getConnection();
-        ship.addShipInfo("test", "test", "5000000hp", 23456);
-        System.out.println(con);
+//        Ships ship = new Ships();
+//        Connection con = ConnectionBuidler.getConnection();
+//        ship.addShipInfo("Patis", "bananboat", 5000, 23456);
+//        System.out.println(con);
+
+    Ships s = Ships.findById(151);
+        System.out.println(s.getShipName()+s.getShipType()+s.getDisplacement()+s.getExpen());
                 
     }
 }

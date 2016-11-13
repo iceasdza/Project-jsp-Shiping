@@ -34,11 +34,12 @@ public class addShipServlet extends HttpServlet {
       String type = request.getParameter("type");
       String displace = request.getParameter("displace");
       String expen = request.getParameter("expenses");
+      int dis = Integer.parseInt(displace);
       int expens = Integer.parseInt(expen);
         
           Ships s = new Ships();
       if(shipname != null && type != null && displace != null && expen != null){
-          s.addShipInfo(shipname, type, displace, expens);
+          s.addShipInfo(shipname, type, dis, expens);
           
           request.setAttribute("msg", "ship has been add!");
          
