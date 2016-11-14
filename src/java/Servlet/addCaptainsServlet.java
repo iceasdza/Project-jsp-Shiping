@@ -5,7 +5,8 @@
  */
 package Servlet;
 
-import Model.Ships;
+import Model.Captains;
+import com.sun.xml.internal.fastinfoset.EncodingConstants;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author patiz
  */
-public class addShipServlet extends HttpServlet {
+public class addCaptainsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,24 +31,38 @@ public class addShipServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      String shipname = request.getParameter("shipname");
-      String type = request.getParameter("type");
-      String displacement = request.getParameter("displace");
-      String expen = request.getParameter("expen");
-      int displace = Integer.parseInt(displacement);
-      int expens = Integer.parseInt(expen);
-        
-      if(shipname != null && type != null && displacement != null && expen != null){
-             Ships s = new Ships();
-             s.addShipInfo(shipname, type, displace, expens);
-          
-          request.setAttribute("msg", "ship has been add!");
-         
-      }else{
-                request.setAttribute("alert","fail to add Ship !");
+       
+            String fname = request.getParameter("fname");
+            String lname  = request.getParameter("lname");
+            String level  = request.getParameter("level");
+            String email  = request.getParameter("email");
+            String tel  = request.getParameter("tel");
+            String addr  = request.getParameter("addr");
+            String expen  = request.getParameter("expen");
+            int lv = Integer.parseInt(level);
+            int expe = Integer.parseInt(expen);
+            
+            boolean cs = Captains.checkEmail(email);
+            if(cs==false){
+                request.setAttribute("repaeat", "this eamil has been use");
+                 getServletContext().getRequestDispatcher("/AddInfo.jsp").forward(request, response);
+                 return; 
             }
-          getServletContext().getRequestDispatcher("/AddInfo.jsp").forward(request, response);
-      
+            if (lname != null && fname != null && addr != null && level != null && email != null && tel != null && expen != null) {
+                
+            Captains c = new Captains();
+            c.addInfo(fname, lname, lv, email, tel, addr, expe);
+            request.setAttribute("success", "Add captain success !!!");
+             getServletContext().getRequestDispatcher("/AddInfo.jsp").forward(request, response);
+        }else{
+                request.setAttribute("msg","Fail to add Captain !!!");
+                 getServletContext().getRequestDispatcher("/AddInfo.jsp").forward(request, response);
+                 return; 
+            }
+            
+            
+           
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -91,6 +91,28 @@ public class Captains {
         this.expen = expen;
     }
     
+    public static  boolean checkEmail(String email){
+            boolean b = true;
+            ArrayList<Captains> c = new ArrayList<>();
+           Captains a ;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm =con.prepareStatement("select * from CAPTAINS where email = ?");
+                    pstm.setString(1, email);
+                    ResultSet rs = pstm.executeQuery();
+                    while(rs.next()){
+                        a = new Captains();
+                        a.email = rs.getString("email");
+                        c.add(a);
+                        b=false;
+                    }
+                    con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Captains.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                    return b;
+    }
+    
     public void addInfo(String fname,String lname,int level,String email,String tel,String addr,int expen){
         try {
             Connection con = ConnectionBuidler.getConnection();
@@ -112,7 +134,7 @@ public class Captains {
     
     public static ArrayList<Captains> findByName(String name){
         ArrayList<Captains>  cap = new ArrayList<>();
-        Captains caps = new Captains();
+        Captains caps ;
         try {
             Connection con = ConnectionBuidler.getConnection();
          PreparedStatement pstm = con.prepareStatement("select * from captains where lower(firstname) like ? or upper(firstname) like ?");
@@ -120,6 +142,7 @@ public class Captains {
          pstm.setString(2, "%"+name+"%");
             ResultSet rs  = pstm.executeQuery();
             while(rs.next()){
+                caps = new Captains();
                 caps.firstname = rs.getString("firstname");
                 caps.lastname = rs.getString("lastname");
                 caps.level = rs.getInt("level");
@@ -144,10 +167,12 @@ public class Captains {
 //        Captains cap = new Captains();
 //        cap.addInfo("Patis", "Jongsiriwanich", 100, "ice_za.@hotmail.com", "0988320601", "HELL", 50000);
 
-        ArrayList<Captains> cap = Captains.findByName("P");
-        for (Captains c : cap) {
-            System.out.println(c.getFirstname());
-        }
+//        ArrayList<Captains> cap = Captains.findByName("P");
+//        for (Captains c : cap) {
+//            System.out.println(c.getFirstname());
+//        }
+        boolean a = Captains.checkEmail("ice_za.@hotmail.com");
+        System.out.println(a);
     }
     
 }

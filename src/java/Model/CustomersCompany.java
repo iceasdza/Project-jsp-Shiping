@@ -100,9 +100,8 @@ public class CustomersCompany {
     }
     
     public static void main(String[] args) {
-        CustomersCompany c = CustomersCompany.findById(2);
-        System.out.println(c.getNameCompany()+c.getLvCompany()+c.getAddrCompany());
-        
+        CustomersCompany c = new CustomersCompany();
+        c.addCompany("DDD", 2, "hell", "TH01");
         
     }
 }

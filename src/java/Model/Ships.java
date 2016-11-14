@@ -93,13 +93,13 @@ public class Ships {
    }
     
     public static void main(String[] args) throws SQLException {
-//        Ships ship = new Ships();
-//        Connection con = ConnectionBuidler.getConnection();
-//        ship.addShipInfo("Patis", "bananboat", 5000, 23456);
+        Ships ship = new Ships();
+        Connection con = ConnectionBuidler.getConnection();
+        ship.addShipInfo("Patis", "bananboat", 5000, 23456);
 //        System.out.println(con);
 
-    Ships s = Ships.findById(151);
-        System.out.println(s.getShipName()+s.getShipType()+s.getDisplacement()+s.getExpen());
-                
+//    Ships s = Ships.findById(151);
+//        System.out.println(s.getShipName()+s.getShipType()+s.getDisplacement()+s.getExpen());
+//                
     }
 }

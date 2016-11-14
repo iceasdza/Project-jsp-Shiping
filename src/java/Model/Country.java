@@ -20,11 +20,11 @@ import javax.naming.spi.DirStateFactory;
  */
 public class Country {
 
-    private int idCountry;
+    private String idCountry;
     private String countryName;
     private Double timeTravel;
 
-    public int getIdCountry() {
+    public String getIdCountry() {
         return idCountry;
     }
 
@@ -36,7 +36,7 @@ public class Country {
         return timeTravel;
     }
 
-    public void setIdCountry(int idCountry) {
+    public void setIdCountry(String idCountry) {
         this.idCountry = idCountry;
     }
 
@@ -61,14 +61,33 @@ public class Country {
             Logger.getLogger(Country.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public static ArrayList<Country> countryList(){
+            ArrayList<Country> c = new ArrayList<>();
+            Country co;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm = con.prepareStatement("select idcountry from country");
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){ 
+                co= new Country();
+                co.idCountry = rs.getString("idcountry");
+                c.add(co);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Country.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return c;
+    }
 
     public static Country findById(String id) throws SQLException {
-        Country c = new Country();
+        Country c =null;
         Connection con = ConnectionBuidler.getConnection();
         PreparedStatement pstm = con.prepareStatement("select * from country where lower(idCountry) like ?");
         pstm.setString(1, "%"+id+"%");
         ResultSet rs = pstm.executeQuery();
         while (rs.next()) {
+            c= new Country();
             c.countryName = rs.getString("nameCountry");
             c.timeTravel = rs.getDouble("time_travel");
         }
@@ -82,9 +101,14 @@ public class Country {
         
 //
 //        Country cc = new Country();
-//        cc.addCountry("TH04", "THAI",150.151);
-        
-        Country co = Country.findById("TH02");
-        System.out.println(co.getCountryName());
+//        cc.addCountry("HK", "HONGKONG",5.00);
+//        
+//        Country co = Country.findById("TH");
+//        System.out.println(co.getCountryName());
+        Country cc = new Country();
+        ArrayList<Country> c = cc.countryList();
+        for (Country country : c) {
+            System.out.println(country.getIdCountry());
+        }
     }
 }

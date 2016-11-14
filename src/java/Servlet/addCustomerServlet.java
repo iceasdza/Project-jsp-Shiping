@@ -5,7 +5,7 @@
  */
 package Servlet;
 
-import Model.Ships;
+import Model.CustomersCompany;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author patiz
  */
-public class addShipServlet extends HttpServlet {
+public class addCustomerServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,25 +30,26 @@ public class addShipServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      String shipname = request.getParameter("shipname");
-      String type = request.getParameter("type");
-      String displacement = request.getParameter("displace");
-      String expen = request.getParameter("expen");
-      int displace = Integer.parseInt(displacement);
-      int expens = Integer.parseInt(expen);
-        
-      if(shipname != null && type != null && displacement != null && expen != null){
-             Ships s = new Ships();
-             s.addShipInfo(shipname, type, displace, expens);
-          
-          request.setAttribute("msg", "ship has been add!");
-         
-      }else{
-                request.setAttribute("alert","fail to add Ship !");
-            }
-          getServletContext().getRequestDispatcher("/AddInfo.jsp").forward(request, response);
-      
-    }
+            String name = request.getParameter("companyName");
+            String level = request.getParameter("level");
+            String addr = request.getParameter("addr");
+            String coun = request.getParameter("countryId");
+            
+             int lv = Integer.parseInt(level);
+             
+             if(name!=null && level!=null && addr!=null && coun !=null){
+                 CustomersCompany cust = new CustomersCompany();
+                 cust.addCompany(name, lv, addr, coun);
+                 
+                 request.setAttribute("success", "Add customer success!!!");
+             }else{
+                 request.setAttribute("msg", "Add customer fail!!!");
+                 
+             }
+             
+             getServletContext().getRequestDispatcher("/AddInfo.jsp").forward(request, response);
+        }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

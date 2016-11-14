@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>ADD THE SHIP</h1>
-        <form method="post" name="myForm" action="addShipServlet"><br>
+        <form method="post" name="myForm" action="addShip"><br>
             SHIP NAME  <input type="text" name="shipName" placeholder="shipname" required="">
             Ship type <select name="type" required="">
                 <option>small</option>

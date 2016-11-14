@@ -4,9 +4,33 @@
         <servlet-name>addShipServlet</servlet-name>
         <servlet-class>Servlet.addShipServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addCaptainsServlet</servlet-name>
+        <servlet-class>Servlet.addCaptainsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>searchCaptainServlet</servlet-name>
+        <servlet-class>Servlet.searchCaptainServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addCustomerServlet</servlet-name>
+        <servlet-class>Servlet.addCustomerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>addShipServlet</servlet-name>
         <url-pattern>/addShip</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addCaptainsServlet</servlet-name>
+        <url-pattern>/addCaptains</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchCaptainServlet</servlet-name>
+        <url-pattern>/searchCaptain</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addCustomerServlet</servlet-name>
+        <url-pattern>/addCustomer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
