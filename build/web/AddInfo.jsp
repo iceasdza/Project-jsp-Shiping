@@ -265,6 +265,11 @@
     </div>
         </form>
 
+                    
+                    
+                    
+                    
+                    
 
 <form id="Product" action="addProduct" id="Staff"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: hidden" name="myForm" method="post" >
            <div class="form-group">

@@ -32,6 +32,18 @@
         <servlet-name>addShippingServlet</servlet-name>
         <servlet-class>Servlet.addShippingServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addProductServlet</servlet-name>
+        <servlet-class>Servlet.addProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>shippingInServlet</servlet-name>
+        <servlet-class>Servlet.shippingInServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>shippingOutServlet</servlet-name>
+        <servlet-class>Servlet.shippingOutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>addShipServlet</servlet-name>
         <url-pattern>/addShip</url-pattern>
@@ -63,6 +75,18 @@
     <servlet-mapping>
         <servlet-name>addShippingServlet</servlet-name>
         <url-pattern>/addShipping</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addProductServlet</servlet-name>
+        <url-pattern>/addProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>shippingInServlet</servlet-name>
+        <url-pattern>/shippingInServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>shippingOutServlet</servlet-name>
+        <url-pattern>/shippingOutServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

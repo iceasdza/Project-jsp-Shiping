@@ -75,6 +75,24 @@ public class Shipping {
         }
         
     }
+    public static ArrayList<Shipping> ListShipping(){
+        ArrayList<Shipping> sp = new ArrayList<>();
+        Shipping s ;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+        PreparedStatement pstm = con.prepareStatement("select * from shipping");
+        ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {                
+                s = new Shipping();
+                s.travelNo = rs.getInt("travelno");
+                sp.add(s);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Shipping.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sp;
+    }
     
     
     public static void main(String[] args) {

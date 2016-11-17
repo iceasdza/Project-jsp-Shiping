@@ -174,10 +174,39 @@ public class travel {
         }
          return t;
      }
+     
+     public static ArrayList<travel> ListTravel(){
+         ArrayList<travel> tt  = new ArrayList<>();
+            travel t = null;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm =con.prepareStatement("select * from travel");
+            ResultSet rs =   pstm.executeQuery();
+            while(rs.next()){
+                t = new travel();
+                t.notravel=rs.getInt("notravel");
+                t.status = rs.getString("status");
+                t.starttime = rs.getString("starttime");
+                t.finishtime = rs.getString("finishtime");
+                t.captain =rs.getInt("captian");
+                t.ship=rs.getInt("ship");
+                t.country_from=rs.getString("country_from");
+                t.country_to=rs.getString("country_to");
+                tt.add(t);
+            }
+                con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(travel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return  tt;
+     }
+     
+     
      public static void main(String[] args) {
-        travel t  = new travel();
-        t.addTravel("GOING", "7/11/2016 12:12", "7/11/2016 12:15", 251, 251, "HK", "TH");
-//                int t = travel.currentTravelNo();
-//                System.out.println(t);
+        ArrayList<travel>  t = travel.ListTravel();
+         for (travel object : t) {
+             System.out.println(object.getNotravel());
+         }
+        
     }
 }

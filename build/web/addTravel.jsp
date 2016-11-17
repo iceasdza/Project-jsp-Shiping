@@ -35,7 +35,7 @@
                     </select>
                 </div>
             </div>
-<!--            <div class="form-group">
+           <div class="form-group">
                 <label class="col-sm-2 control-label" >START TIME</label>
                 <div class="col-sm-10">
                     <input class="form-control" type="datetime-local" name="stime" placeholder="" required="">
@@ -46,7 +46,7 @@
                 <div class="col-sm-10">
                     <input class="form-control" type="datetime-local" name="ftime" placeholder="" required="">
                 </div>
-            </div>-->
+            </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label" >Captain</label>
                 <div class="col-sm-10">

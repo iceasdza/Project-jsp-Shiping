@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -79,18 +80,41 @@ public class product {
         
     }
     
-    public static product findById(int id){
+    public static product findByName(String name){
         product pd = new product();
         try {
             Connection con = ConnectionBuidler.getConnection();
-            PreparedStatement pstm = con.prepareStatement("select * from product where idProduct = ?");
-            pstm.setInt(1, id);
+            PreparedStatement pstm = con.prepareStatement("select * from product where name = ?");
+            pstm.setString(1, name);
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
+            pd.idProduct =rs.getInt("idproduct");
             pd.name = rs.getString("name");
             pd.type = rs.getString("type");
             pd.about = rs.getString("about");
             pd.custId=rs.getInt("custid");
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pd;
+    }
+    public static ArrayList<product> productList(){
+        ArrayList<product> pd = new ArrayList<>();
+        product p ;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm = con.prepareStatement("select * from product");
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                p = new product();
+            p.idProduct = rs.getInt("idproduct");
+                p.name = rs.getString("name");
+            p.type = rs.getString("type");
+            p.about = rs.getString("about");
+            p.custId=rs.getInt("custid");
+            pd.add(p);
             }
             con.close();
         } catch (SQLException ex) {
@@ -103,7 +127,8 @@ public class product {
     
     
     public static void main(String[] args) {
-        product p = product.findById(1);
-        System.out.println(p.getName()+p.getType()+p.getAbout()+p.getCustId());
+        product p = product.findByName("aaaa");
+        System.out.println(p.getIdProduct());
+        
     }
 }
