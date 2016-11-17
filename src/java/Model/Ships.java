@@ -18,6 +18,7 @@ import java.util.logging.Logger;
  * @author patiz
  */
 public class Ships {
+    private int shipId;
     private String shipName;
     private String shipType;
     private int displacement;
@@ -91,15 +92,65 @@ public class Ships {
        
        return  s;
    }
+      public static ArrayList<Ships> shipList(){
+            ArrayList<Ships> s = new ArrayList<>();
+            Ships c ;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm = con.prepareStatement("select * from ship");
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                c = new Ships();
+                c.shipId = rs.getInt("shipid");
+                c.shipName =rs.getString("shipname");
+                s.add(c);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Captains.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return s;
+    }
+      public static Ships findIdByName(String name){
+        Ships ship = null;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm = con.prepareStatement("select * from ship where shipName = ?");
+            pstm.setString(1, name);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                ship  = new Ships();
+                ship.shipId = rs.getInt("shipId");
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomersCompany.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return  ship;
+    }
     
     public static void main(String[] args) throws SQLException {
-        Ships ship = new Ships();
-        Connection con = ConnectionBuidler.getConnection();
-        ship.addShipInfo("Patis", "bananboat", 5000, 23456);
+//        Ships ship = new Ships();
+//        Connection con = ConnectionBuidler.getConnection();
+//        ship.addShipInfo("Patis", "bananboat", 5000, 23456);
 //        System.out.println(con);
+////
+    Ships s = Ships.findIdByName("Patis");
+        System.out.println(s.getShipId());
+//          
+//    ArrayList<Ships> s = Ships.shipList();
+//        for (Ships ships : s) {
+//            System.out.println(ships.getShipName());
+//        }
+    }
 
-//    Ships s = Ships.findById(151);
-//        System.out.println(s.getShipName()+s.getShipType()+s.getDisplacement()+s.getExpen());
-//                
+    public int getShipId() {
+        return shipId;
+    }
+
+    public void setShipId(int shipId) {
+        this.shipId = shipId;
     }
 }

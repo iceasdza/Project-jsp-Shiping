@@ -16,6 +16,22 @@
         <servlet-name>addCustomerServlet</servlet-name>
         <servlet-class>Servlet.addCustomerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addStaffServlet</servlet-name>
+        <servlet-class>Servlet.addStaffServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListServlet</servlet-name>
+        <servlet-class>Servlet.ListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addTravelServlet</servlet-name>
+        <servlet-class>Servlet.addTravelServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addShippingServlet</servlet-name>
+        <servlet-class>Servlet.addShippingServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>addShipServlet</servlet-name>
         <url-pattern>/addShip</url-pattern>
@@ -31,6 +47,22 @@
     <servlet-mapping>
         <servlet-name>addCustomerServlet</servlet-name>
         <url-pattern>/addCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addStaffServlet</servlet-name>
+        <url-pattern>/addStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListServlet</servlet-name>
+        <url-pattern>/List</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addTravelServlet</servlet-name>
+        <url-pattern>/addTravel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addShippingServlet</servlet-name>
+        <url-pattern>/addShipping</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

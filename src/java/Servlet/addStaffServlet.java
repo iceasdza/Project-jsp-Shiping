@@ -5,7 +5,7 @@
  */
 package Servlet;
 
-import Model.Ships;
+import Model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author patiz
  */
-public class addShipServlet extends HttpServlet {
+public class addStaffServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,24 +30,28 @@ public class addShipServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      String shipname = request.getParameter("shipname");
-      String type = request.getParameter("type");
-      String displacement = request.getParameter("displace");
-      String expen = request.getParameter("expen");
-      int displace = Integer.parseInt(displacement);
-      int expens = Integer.parseInt(expen);
-        
-      if(shipname != null && type != null && displacement != null && expen != null){
-             Ships s = new Ships();
-             s.addShipInfo(shipname, type, displace, expens);
-          
-          request.setAttribute("success", "ship has been add!");
-         
-      }else{
-                request.setAttribute("msg","fail to add Ship !");
+        String fname = request.getParameter("fname");
+        String lname = request.getParameter("lname");
+        String email = request.getParameter("email");
+        String addr = request.getParameter("addr");
+        String pass = request.getParameter("password");
+           boolean cs = Staff.checkEmail(email);
+            if(cs==false){
+                request.setAttribute("repaeat", "this eamil has been use");
+                 getServletContext().getRequestDispatcher("/AddInfo.jsp").forward(request, response);
+                 return; 
             }
-          getServletContext().getRequestDispatcher("/AddInfo.jsp").forward(request, response);
-      
+        
+            if(fname != null && lname != null && email != null && addr != null && pass!=null){
+                Staff s = new Staff();
+                s.addStaff(fname, lname, email, addr, pass);
+                request.setAttribute("success", "Staff has been add!");
+                
+            }else{
+                
+                request.setAttribute("msg", "Fail to add staff :<");
+            }
+             getServletContext().getRequestDispatcher("/AddInfo.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

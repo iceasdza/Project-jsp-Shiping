@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -105,11 +106,11 @@ public class travel {
     }
     
     
-    public void addTravel(){
+    public void addTravel(String status, String starttime, String finishtime, int captain, int ship, String country_from, String country_to){
         travel t = new travel();
         try {
             Connection con = ConnectionBuidler.getConnection();
-            PreparedStatement pstm = con.prepareStatement("insert into travel (status,starttime,finishtime,captain,ship,country_from,coutry_to) values(?,?,?,?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("insert into travel (status,starttime,finishtime,captian,ship,country_from,country_to) values(?,?,?,?,?,?,?)");
             pstm.setString(1, status);
             pstm.setString(2, starttime);
             pstm.setString(3,finishtime);
@@ -117,10 +118,38 @@ public class travel {
             pstm.setInt(5,ship);
             pstm.setString(6,country_from);
             pstm.setString(7, country_to);
-            pstm.executeQuery();
+            pstm.executeUpdate();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(travel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+    }
+    
+    public static int currentTravelNo(){
+            ArrayList<travel> t  = new ArrayList<>();
+            travel tt ;
+            int max =0;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm = con.prepareStatement("select * from travel");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {                
+                tt = new travel();
+                tt.notravel= rs.getInt("notravel");
+                t.add(tt);
+            }
+            con.close();
+            for (travel s : t) {
+                if(s.getNotravel()>max){
+                    max = s.getNotravel();
+                }
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Shipping.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                    return max;
     }
      public static travel findByNoTravel(int no){
          
@@ -145,4 +174,10 @@ public class travel {
         }
          return t;
      }
+     public static void main(String[] args) {
+        travel t  = new travel();
+        t.addTravel("GOING", "7/11/2016 12:12", "7/11/2016 12:15", 251, 251, "HK", "TH");
+//                int t = travel.currentTravelNo();
+//                System.out.println(t);
+    }
 }

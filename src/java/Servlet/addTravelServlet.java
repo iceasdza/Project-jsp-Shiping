@@ -5,7 +5,9 @@
  */
 package Servlet;
 
+import Model.Captains;
 import Model.Ships;
+import Model.travel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author patiz
  */
-public class addShipServlet extends HttpServlet {
+public class addTravelServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,24 +32,38 @@ public class addShipServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      String shipname = request.getParameter("shipname");
-      String type = request.getParameter("type");
-      String displacement = request.getParameter("displace");
-      String expen = request.getParameter("expen");
-      int displace = Integer.parseInt(displacement);
-      int expens = Integer.parseInt(expen);
+        response.setContentType("text/html;charset=UTF-8");
+        String status = request.getParameter("status");
+//        String start = request.getParameter("stime");
+//        String finish = request.getParameter("stime");
+        String start = "Fixing";
+        String finish = "Fixing";
+        String cap = request.getParameter("cap");
+        String ship = request.getParameter("ship");
+        String from = request.getParameter("from");
+        String to = request.getParameter("To");
         
-      if(shipname != null && type != null && displacement != null && expen != null){
-             Ships s = new Ships();
-             s.addShipInfo(shipname, type, displace, expens);
-          
-          request.setAttribute("success", "ship has been add!");
-         
-      }else{
-                request.setAttribute("msg","fail to add Ship !");
-            }
-          getServletContext().getRequestDispatcher("/AddInfo.jsp").forward(request, response);
-      
+        
+            String fname = cap.substring(0,cap.indexOf(" "));
+            String lname = cap.substring(cap.indexOf(" ")+1);
+            
+            System.out.println(fname+" "+lname);
+            
+            Captains cc = Captains.findIdByName(fname,lname);
+            int capid = cc.getId();
+            Ships ss = Ships.findIdByName(ship);
+            
+                if(status !=null && cap != null && ship!=null && from != null && to != null && start !=null && finish !=null){
+                request.setAttribute("custin", from);
+                request.setAttribute("custout", to);
+                
+                travel t = new travel();
+                t.addTravel(status, start, finish, capid, ss.getShipId(), from, to);
+                
+            getServletContext().getRequestDispatcher("/addShipping.jsp").forward(request, response);
+            }             
+            
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

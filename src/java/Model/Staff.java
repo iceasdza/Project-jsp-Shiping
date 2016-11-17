@@ -18,6 +18,7 @@ import java.util.logging.Logger;
  * @author patiz
  */
 public class Staff {
+
     private int id;
     private String fistname;
     private String lastname;
@@ -72,25 +73,47 @@ public class Staff {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public void addStaff(String fname,String lname,String email,String addr,String password){
+
+    public void addStaff(String fname, String lname, String email, String addr, String password) {
         Staff st = new Staff();
         try {
             Connection con = ConnectionBuidler.getConnection();
-            PreparedStatement pstm = con.prepareStatement("insert into staffs (firstname,lastnames,email,address,password) values(?,?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("insert into staffs (firstname,lastname,email,address,password) values(?,?,?,?,?)");
             pstm.setString(1, fname);
-            pstm.setString(2,lname);
-            pstm.setString(3,email);
-            pstm.setString(4,addr);
-            pstm.setString(5,password);
+            pstm.setString(2, lname);
+            pstm.setString(3, email);
+            pstm.setString(4, addr);
+            pstm.setString(5, password);
             pstm.executeUpdate();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Staff.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public static ArrayList<Staff> findByName(String name){
+
+    public static boolean checkEmail(String email) {
+        boolean b = true;
+        ArrayList<Staff> s = new ArrayList<>();
+        Staff a;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm = con.prepareStatement("select * from CAPTAINS where email = ?");
+            pstm.setString(1, email);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                a = new Staff();
+                a.email = rs.getString("email");
+                s.add(a);
+                b = false;
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Captains.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return b;
+    }
+
+    public static ArrayList<Staff> findByName(String name) {
         ArrayList<Staff> st = new ArrayList<>();
         Staff s = new Staff();
         try {
@@ -98,7 +121,7 @@ public class Staff {
             PreparedStatement pstm = con.prepareStatement("select * from staffs where name like ?");
             pstm.setString(1, name);
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 s.id = rs.getInt("id");
                 s.fistname = rs.getString("firstname");
                 s.lastname = rs.getString("lastnames");
@@ -113,10 +136,85 @@ public class Staff {
         }
         return st;
     }
- 
-    public static void main(String[] args) {
-        Staff st = new Staff();
-        st.addStaff("Patiz", "Jongsiriwanich", "ice_za.007@hotmail.com", "hell", "fufufufufu");
+
+    public static ArrayList<Staff> staffList() {
+        ArrayList<Staff> st = new ArrayList<>();
+        Staff s;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm = con.prepareStatement("select * from staffs");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                s = new Staff();
+                s.id = rs.getInt("id");
+                s.fistname = rs.getString("firstname");
+                s.lastname = rs.getString("lastname");
+                s.email = rs.getString("email");
+                s.address = rs.getString("address");
+                s.password = rs.getString("password");
+                st.add(s);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Staff.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return st;
     }
-    
+
+    public static ArrayList<Staff> staffsIdList() {
+        ArrayList<Staff> staff = new ArrayList<>();
+        Staff s;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm = con.prepareStatement("select * from staffs");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                s = new Staff();
+                s.id = rs.getInt("id");
+                staff.add(s);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomersCompany.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return staff;
+    }
+
+    public static Staff findByName2(String name) {
+        Staff s = null;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm = con.prepareStatement("select * from staffs where firstname = ?");
+            pstm.setString(1, name);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                s = new Staff();
+                s.id = rs.getInt("id");
+                s.fistname = rs.getString("firstname");
+                s.lastname = rs.getString("lastname");
+                s.email = rs.getString("email");
+                s.address = rs.getString("address");
+                s.password = rs.getString("password");
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Staff.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return s;
+    }
+
+    public static void main(String[] args) {
+//        Staff st = new Staff();
+//        st.addStaff("Patiz", "Jongsiriwanich", "ice_za.007@hotmail.com", "hell", "fufufufufu");
+//    }
+        ArrayList<Staff> s = Staff.staffList();
+
+        for (Staff staff : s) {
+            String test = staff.getFistname() + " " + staff.getLastname();
+            String srt = test.substring(0, test.indexOf(" "));
+            Staff ss = Staff.findByName2(srt);
+            System.out.println(staff.getId());
+
+        }
+    }
 }

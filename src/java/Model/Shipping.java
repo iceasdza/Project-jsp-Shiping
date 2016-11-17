@@ -7,7 +7,11 @@ package Model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,13 +57,16 @@ public class Shipping {
         this.pic = pic;
     }
     
-    public void addShipping(int customerIn,int customerOut,int pic){
+    
+    
+    public void addShipping(int notravel,int customerIn,int customerOut,int pic){
         try {
             Connection con = ConnectionBuidler.getConnection();
-            PreparedStatement pstm = con.prepareStatement("insert into shipping (customer_in,customer_out,pic) values(?,?,?)");
-            pstm.setInt(1, customerIn);
-            pstm.setInt(2, customerOut);
-            pstm.setInt(3, pic);
+            PreparedStatement pstm = con.prepareStatement("insert into shipping (travelno,customer_in,customer_out,pic) values(?,?,?,?)");
+            pstm.setInt(1, notravel);
+            pstm.setInt(2, customerIn);
+            pstm.setInt(3, customerOut);
+            pstm.setInt(4, pic);
             
             pstm.executeUpdate();
             con.close();
@@ -71,5 +78,9 @@ public class Shipping {
     
     
     public static void main(String[] args) {
+        Shipping s = new Shipping();
+        int t  = travel.currentTravelNo();
+        s.addShipping(t, 91, 1551, 21);//<--- staffId
+                        //^    ^ idcompany from customer company
     }
 }

@@ -5,7 +5,11 @@
         <group>
             <file>file:/home/patiz/Patiz/Project/JSP.Shipping-Project/Project-jsp-Shiping/web/AddInfo.jsp</file>
             <file>file:/home/patiz/Patiz/Project/JSP.Shipping-Project/Project-jsp-Shiping/src/java/Model/Captains.java</file>
-            <file>file:/home/patiz/Patiz/Project/JSP.Shipping-Project/Project-jsp-Shiping/src/java/Servlet/addCaptainsServlet.java</file>
+            <file>file:/home/patiz/Patiz/Project/JSP.Shipping-Project/Project-jsp-Shiping/src/java/Model/CustomersCompany.java</file>
+            <file>file:/home/patiz/Patiz/Project/JSP.Shipping-Project/Project-jsp-Shiping/web/addShipping.jsp</file>
+            <file>file:/home/patiz/Patiz/Project/JSP.Shipping-Project/Project-jsp-Shiping/src/java/Model/product.java</file>
+            <file>file:/home/patiz/Patiz/Project/JSP.Shipping-Project/Project-jsp-Shiping/src/java/Servlet/addTravelServlet.java</file>
+            <file>file:/home/patiz/Patiz/Project/JSP.Shipping-Project/Project-jsp-Shiping/web/addTravel.jsp</file>
         </group>
     </open-files>
 </project-private>

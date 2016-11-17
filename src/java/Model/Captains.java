@@ -159,20 +159,71 @@ public class Captains {
         }
         return cap;
                 }
+      public static Captains findIdByName(String name,String lastname){
+        Captains cap = null;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm = con.prepareStatement("select * from Captains where firstname = ? && lastname = ?");
+            pstm.setString(1, name);
+            pstm.setString(2, lastname);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                cap  = new Captains();
+                cap.id = rs.getInt("Id");
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomersCompany.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return  cap;
+    }
     
-    
+    public static ArrayList<Captains> captainsList(){
+            ArrayList cap = new ArrayList();
+            Captains c ;
+        try {
+            Connection con = ConnectionBuidler.getConnection();
+            PreparedStatement pstm = con.prepareStatement("select * from captains");
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                c = new Captains();
+                c.id = rs.getInt("id");
+                c.firstname = rs.getString("firstname");
+                c.lastname = rs.getString("lastname");
+                cap.add(c);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Captains.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return cap;
+    }
     
     
     public static void main(String[] args) {
 //        Captains cap = new Captains();
 //        cap.addInfo("Patis", "Jongsiriwanich", 100, "ice_za.@hotmail.com", "0988320601", "HELL", 50000);
 
-//        ArrayList<Captains> cap = Captains.findByName("P");
-//        for (Captains c : cap) {
-//            System.out.println(c.getFirstname());
+//        ArrayList<Captains> cap = Captains.captainsList();
+//        for (Captains captains : cap) {
+//            System.out.println(captains.getFirstname()+" "+captains.getLastname());
 //        }
-        boolean a = Captains.checkEmail("ice_za.@hotmail.com");
-        System.out.println(a);
+            String n = "Patis Jongsiriwanich";
+            
+            String fname = n.substring(0,n.indexOf(" "));
+            String lname = n.substring(n.indexOf(" ")+1);
+            
+            System.out.println(fname);
+            System.out.println(lname);
+            
+            Captains c = Captains.findIdByName(fname,lname);
+//            Captains c2 = Captains.findIdByName("Patis","Jongsiriwanich");
+            System.out.println(c.getId());
+//            System.out.println(c2.getId());
+        
+
     }
     
 }
