@@ -60,7 +60,7 @@ public class addTravelServlet extends HttpServlet {
                 travel t = new travel();
                 t.addtravel(status, start, finish, capid, ss.getShipsId(), from, to);
                 
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/addShipping.jsp").forward(request, response);
             }             
             
         

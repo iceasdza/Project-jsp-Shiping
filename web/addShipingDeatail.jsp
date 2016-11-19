@@ -27,24 +27,54 @@
         function myFunction1() {
                          document.getElementById("shipin").style.visibility = "visible";
                          document.getElementById("shipout").style.visibility = "hidden";
+                         document.getElementById("s1").style.backgroundColor = "#C0C0C0";
+                         document.getElementById("s2").style.backgroundColor = "#DCDCDC";
             }
           function myFunction2() {
                          document.getElementById("shipout").style.visibility = "visible";
                          document.getElementById("shipin").style.visibility = "hidden";
-            }   
+                         document.getElementById("s2").style.backgroundColor = "#C0C0C0";
+                         
+                         document.getElementById("s1").style.backgroundColor = "#DCDCDC";
+            }
+            
         </script>
+        <style>
+            form{
+                 position: absolute;
+                margin-left: auto;
+                margin-right: auto;
+                left: 0;
+                right: 0;
+            }
+             #s1{
+                width: 16%;
+                height: 50px;
+                background-color: #DCDCDC;
+                text-align: center;
+            }
+            #s2{
+                width: 16%;
+                height: 50px;
+                background-color: #DCDCDC;
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
-        
-        <h1>Shipping detail</h1>
+        <jsp:include page="header/header.jsp"/>
+        <h1 style="text-align: center">Shipping detail</h1>
         <h1 style="color: green;text-align: center">${success}</h1>
         <h1 style="color: red;text-align: center">${msg}</h1>
-          <p style="text-align: center">
-            <button id="shipin1" type="button" class="btn btn-default btn-lg" onclick="myFunction1()">Add shipping in</button>
-            <button id="shipout2" type="button" class="btn btn-default btn-lg" onclick="myFunction2()">Add shipping out</button>
-</p>
-        <form action="shippingInServlet" onSubmit="return check()" id="shipin"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: visible" name="myForm"  method="post" >
-         <h3>Shipping in</h3>  
+<!--          <p style="text-align: center">
+            <button id="shipin1" type="button" class="btn btn-default btn-lg" onmouseover="myFunction1()">Add shipping in</button>
+            <button id="shipout2" type="button" class="btn btn-default btn-lg" onmouseover="myFunction2()">Add shipping out</button>-->
+    <div style="text-align: center">
+            <label id="s1" onmouseover="myFunction1()" ><h3>Add shipping in</h3></label>
+            <label id="s2" onmouseover="myFunction2()"><h3>Add shipping out</h3></label>
+        </div>
+        <form action="shippingInServlet" onSubmit="return check()" id="shipin"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: #DCDCDC;margin-bottom: 50px;border-radius: 0px;border-width: 10px;visibility: visible" name="myForm"  method="post" >
+         <h1>Shipping in</h1>  
             <div class="form-group">
                 <label class="col-sm-2 control-label" >Travel no</label>
                 <div class="col-sm-10">
@@ -88,8 +118,8 @@
                     
                     
                     
-     <form action="shippingOutServlet" onSubmit="return check()" id="shipout"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: hidden" name="myForm"  method="post" >
-         <h3>Shipping out</h3>
+     <form action="shippingOutServlet" onSubmit="return check()" id="shipout"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: #DCDCDC;margin-bottom: 50px;border-radius: 0px;border-width: 10px;visibility: hidden" name="myForm"  method="post" >
+         <h1>Shipping out</h1>
             <div class="form-group">
                 <label class="col-sm-2 control-label" >Travel no</label>
                 <div class="col-sm-10">

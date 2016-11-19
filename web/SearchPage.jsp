@@ -88,24 +88,43 @@
                 document.getElementById("ship").style.visibility = "hidden";
                 document.getElementById("company2").style.visibility = "hidden";
                 document.getElementById("product").style.visibility = "hidden";
+                
+                document.getElementById("s2").style.backgroundColor = "#C0C0C0";
+                document.getElementById("s3").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s4").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s5").style.backgroundColor = "#DCDCDC";
             }
             function myFunction2() {
                 document.getElementById("cap").style.visibility = "hidden";
                 document.getElementById("ship").style.visibility = "visible";
                 document.getElementById("company2").style.visibility = "hidden";
                 document.getElementById("product").style.visibility = "hidden";
+                
+                document.getElementById("s3").style.backgroundColor = "#C0C0C0";
+                document.getElementById("s2").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s4").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s5").style.backgroundColor = "#DCDCDC";
             }
             function myFunction3() {
                 document.getElementById("cap").style.visibility = "hidden";
                 document.getElementById("ship").style.visibility = "hidden";
                 document.getElementById("company2").style.visibility = "visible";
                 document.getElementById("product").style.visibility = "hidden";
+                  
+                document.getElementById("s4").style.backgroundColor = "#C0C0C0";
+                document.getElementById("s2").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s2").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s5").style.backgroundColor = "#DCDCDC";
             }
             function myFunction4() {
                 document.getElementById("cap").style.visibility = "hidden";
                 document.getElementById("ship").style.visibility = "hidden";
                 document.getElementById("company2").style.visibility = "hidden";
                 document.getElementById("product").style.visibility = "visible";
+                document.getElementById("s5").style.backgroundColor = "#C0C0C0";
+                document.getElementById("s3").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s4").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s2").style.backgroundColor = "#DCDCDC";
             }
         </script>
         <style>

@@ -60,7 +60,7 @@ public class addShippingServlet extends HttpServlet {
                 }else{
                   request.setAttribute("msg","fail to add Shipping !");
               }
-              getServletContext().getRequestDispatcher("/addShipping.jsp").forward(request, response);
+              getServletContext().getRequestDispatcher("/addShipingDeatail.jsp").forward(request, response);
              
     }
 

@@ -80,18 +80,19 @@ public class Ships {
         }
 
     }
-    public static ArrayList<Ships> findByName(String name){
-        ArrayList<Ships> s  = new ArrayList<>();
-        Ships ss ;
+
+    public static ArrayList<Ships> findByName(String name) {
+        ArrayList<Ships> s = new ArrayList<>();
+        Ships ss;
         try {
             Connection con = ConnectionBuidler.getConnection();
             PreparedStatement pstm = con.prepareStatement("select * from SHIP where Lower(Shipname) like ? or Upper(Shipname) like ? ");
-            pstm.setString(1, name+"%");
-            pstm.setString(2, name+"%");
+            pstm.setString(1, name + "%");
+            pstm.setString(2, name + "%");
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 ss = new Ships();
-                ss.shipId =rs.getInt("shipId");
+                ss.shipId = rs.getInt("shipId");
                 ss.shipName = rs.getString("shipName");
                 ss.shipType = rs.getString("shipType");
                 ss.displacement = rs.getInt("Displacement");
@@ -102,9 +103,10 @@ public class Ships {
         } catch (SQLException ex) {
             Logger.getLogger(Ships.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return s;
     }
+
     public static Ships findById(int id) throws SQLException {
         Ships s = new Ships();
         Connection con = ConnectionBuidler.getConnection();
@@ -166,18 +168,14 @@ public class Ships {
     }
 
     public static void main(String[] args) throws SQLException {
-//        Ships ship = new Ships();
-//        Connection con = ConnectionBuidler.getConnection();
-//        ship.addShipsInfo("Patis", "bananboat", 5000, 23456);
+        Ships ship = new Ships();
+        Connection con = ConnectionBuidler.getConnection();
+        ship.addShipsInfo("Patis", "bananboat", 5000, 23456);
 //        System.out.println(con);
 ////
 //        Ships s = Ships.findIdByName("Patis");
 //        System.out.println(s.getShipsId());
-//          
-  ArrayList<Ships> s = Ships.findByName("");
-        for (Ships ships : s) {
-            System.out.println(ships.getShipsName());
-        }
+//  
     }
 
     public int getShipsId() {

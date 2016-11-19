@@ -32,24 +32,39 @@ right: 0;
                          document.getElementById("captain").style.visibility = "hidden";
                          document.getElementById("Customer").style.visibility = "hidden";
                               document.getElementById("Staff").style.visibility = "hidden";
-                              
                          document.getElementById("Product").style.visibility = "hidden";
+                         
+                             
+                document.getElementById("s1").style.backgroundColor = "#C0C0C0";
+                document.getElementById("s2").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s3").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s4").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s5").style.backgroundColor = "#DCDCDC";
             }
           function myFunction2() {
                          document.getElementById("captain").style.visibility = "visible";
                          document.getElementById("ships").style.visibility = "hidden";
                          document.getElementById("Customer").style.visibility = "hidden";
                               document.getElementById("Staff").style.visibility = "hidden";
-                              
                          document.getElementById("Product").style.visibility = "hidden";
+                document.getElementById("s1").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s2").style.backgroundColor = "#C0C0C0";
+                document.getElementById("s3").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s4").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s5").style.backgroundColor = "#DCDCDC";
             }
           function myFunction3() {
                          document.getElementById("Customer").style.visibility = "visible";
                          document.getElementById("ships").style.visibility = "hidden";
                          document.getElementById("captain").style.visibility = "hidden";
                          document.getElementById("Staff").style.visibility = "hidden";
-                         
                          document.getElementById("Product").style.visibility = "hidden";
+                         
+            document.getElementById("s1").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s2").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s3").style.backgroundColor = "#C0C0C0";
+                document.getElementById("s4").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s5").style.backgroundColor = "#DCDCDC";
             }
           function myFunction4() {
                          document.getElementById("Staff").style.visibility = "visible";
@@ -57,6 +72,12 @@ right: 0;
                          document.getElementById("ships").style.visibility = "hidden";
                          document.getElementById("captain").style.visibility = "hidden";  
                          document.getElementById("Product").style.visibility = "hidden";
+                         
+                    document.getElementById("s1").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s2").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s3").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s4").style.backgroundColor = "#C0C0C0";
+                document.getElementById("s5").style.backgroundColor = "#DCDCDC";
             }
           function myFunction5() {
                          document.getElementById("Product").style.visibility = "visible";
@@ -64,6 +85,12 @@ right: 0;
                          document.getElementById("ships").style.visibility = "hidden";
                          document.getElementById("captain").style.visibility = "hidden";
                           document.getElementById("Staff").style.visibility = "hidden";
+                                     
+                document.getElementById("s1").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s2").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s3").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s4").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s5").style.backgroundColor = "#C0C0C0";
             }
             function showpass(){
                     document.getElementById("pass").type = "text";
@@ -77,7 +104,9 @@ right: 0;
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-     
+        <style>
+            
+        </style>
     </head>
     <body style="background-color: white">
         <jsp:include page="header/header.jsp"/>
@@ -86,15 +115,22 @@ right: 0;
         <h1 style="color: red;text-align: center">${msg}</h1>
         <h1 style="color: red;text-align: center">${repaeat}</h1>
       
-        <p style="text-align: center">
+<!--        <p style="text-align: center">
             <button id="shipbutton" type="button" class="btn btn-default btn-lg" onmouseover="myFunction2() ">Add captain</button>
             <button id="capbutton" type="button" class="btn btn-default btn-lg" onmouseover="myFunction1()">Add ship</button>
             <button id="customerbutton" type="button" class="btn btn-default btn-lg" onmouseover="myFunction3()">Add customer</button>
             <button id="Productbutton" type="button" class="btn btn-default btn-lg" onmouseover="myFunction5()">Add Product</button>
-</p>
+</p>-->
+<div style="text-align: center">
+            <label id="s1" onmouseover="myFunction1()" style="background-color:#DCDCDC"><h3>Add Ship</h3></label>
+            <label id="s2" onmouseover="myFunction2()" style="background-color:#DCDCDC"><h3>Add Captain</h3></label>
+            <label id="s3" onmouseover="myFunction3()" style="background-color:#DCDCDC"><h3>Add Customer</h3></label>
+            <label id="s4" onmouseover="myFunction4()" style="background-color:#DCDCDC"> <h3>Add Staff</h3></label>
+            <label id="s5" onmouseover="myFunction5()" style="background-color:#DCDCDC"> <h3>Add Product</h3></label>
+        </div>
         
     <center>
-        <form id="captain"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: visible;" name="myForm" action="addCaptains" method="post" >
+        <form id="captain"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: #DCDCDC;margin-bottom: 50px;border-radius: 0px;border-width: 10px;visibility: visible;" name="myForm" action="addCaptains" method="post" >
             <div class="form-group">
                 <label class="col-sm-2 control-label" >First name</label>
                 <div class="col-sm-10">
@@ -149,7 +185,7 @@ right: 0;
 
 
 
-<form  action="addShip" id="ships"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
+<form  action="addShip" id="ships"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: #DCDCDC;margin-bottom: 50px;border-radius: 0px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
             <div class="form-group">
                 <label class="col-sm-2 control-label" >Ship name</label>
                 <div class="col-sm-10">
@@ -171,13 +207,13 @@ right: 0;
             <div class="form-group">
                 <label class="col-sm-2 control-label" >Displacement</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="displace" placeholder="Displacement" required="">
+                    <input type="number" class="form-control" name="displace" placeholder="Displacement" required="" min="1" max="100000">
                 </div>
             </div>
              <div class="form-group">
                 <label class="col-sm-2 control-label" >Expenses</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="expen" placeholder="expen" required="">
+                    <input type="number" class="form-control" name="expen" placeholder="expen" required="" min="1" max="100000">
                 </div>
             </div>
             <div class="col-sm-offset-2 col-sm-10">
@@ -190,7 +226,7 @@ right: 0;
 
 
 
-<form id="Customer" action="addCustomer" id="ships"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
+<form id="Customer" action="addCustomer" id="ships"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: #DCDCDC;margin-bottom: 50px;border-radius: 0px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
             <div class="form-group">
                 <label class="col-sm-2 control-label" >Company Name</label>
                 <div class="col-sm-10">
@@ -233,7 +269,7 @@ right: 0;
 
 
 
-<form id="Staff" action="addStaff" id="Staff"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
+<form id="Staff" action="addStaff" id="Staff"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: #DCDCDC;margin-bottom: 50px;border-radius: 0px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
            <div class="form-group">
                 <label class="col-sm-2 control-label" >First name</label>
                 <div class="col-sm-10">
@@ -281,7 +317,7 @@ right: 0;
                     
                     
 
-<form id="Product" action="addProduct" id="Staff"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
+<form id="Product" action="addProduct" id="Staff"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: #DCDCDC;margin-bottom: 50px;border-radius: 0px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
            <div class="form-group">
                 <label class="col-sm-2 control-label" >Product name</label>
                 <div class="col-sm-10">

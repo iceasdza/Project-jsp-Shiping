@@ -134,10 +134,9 @@ public class product {
         try {
             Connection con = ConnectionBuidler.getConnection();
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM product p JOIN customerscompany c on p.custid = c.idCompany WHERE lower(p.name) LIKE ? or upper(p.name) like ?");
-            pstm.setString(1, name);
-            pstm.setString(2, name);
+            pstm.setString(1, "%"+name+"%");
+            pstm.setString(2, "%"+name+"%");
             ResultSet rs = pstm.executeQuery();
-            
              while (rs.next()) {
                 p = new product();
                 p.idProduct = rs.getInt("idproduct");
@@ -156,8 +155,10 @@ public class product {
     }
 
     public static void main(String[] args) {
-        product p = product.findByName("aaaa");
-        System.out.println(p.getIdProduct());
+        ArrayList<product> p = product.ListName("");
+        for (product object : p) {
+            System.out.println(object.getCustname());
+        }
 
     }
 

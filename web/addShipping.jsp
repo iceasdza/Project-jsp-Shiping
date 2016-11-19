@@ -27,7 +27,16 @@
                 }
             }
         </script>
-        <title>JSP Page</title>
+        <style>
+            form{
+                 position: absolute;
+                margin-left: auto;
+                margin-right: auto;
+                left: 0;
+                right: 0;
+            }
+        </style>
+        <title>ADD SHIPPING</title>
         
     </head>
     <body>
@@ -35,7 +44,7 @@
         <h1 style="text-align: center">Add shipping page!</h1>
         <h1 style="color: green;text-align: center">${success}</h1>
         <h1 style="color: red;text-align: center">${msg}</h1>
-         <form onSubmit="return check()" id="captain"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: visible" name="myForm" action="addShipping" method="post" >
+         <form onSubmit="return check()" id="captain"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: #DCDCDC;margin-bottom: 50px;border-radius: 0;border-width: 10px;visibility: visible" name="myForm" action="addShipping" method="post" >
          
             <div class="form-group">
                 <label class="col-sm-2 control-label" >Customer-In</label>
