@@ -117,16 +117,17 @@ public class Staff {
 
     public static ArrayList<Staff> findByName(String name) {
         ArrayList<Staff> st = new ArrayList<>();
-        Staff s = new Staff();
+        Staff s ;
         try {
             Connection con = ConnectionBuidler.getConnection();
-            PreparedStatement pstm = con.prepareStatement("select * from staffs where name like ?");
-            pstm.setString(1, name);
+            PreparedStatement pstm = con.prepareStatement("select * from staffs where firstname like ?");
+            pstm.setString(1, name + "%");
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
+                s = new Staff();
                 s.id = rs.getInt("id");
                 s.fistname = rs.getString("firstname");
-                s.lastname = rs.getString("lastnames");
+                s.lastname = rs.getString("lastname");
                 s.email = rs.getString("email");
                 s.address = rs.getString("address");
                 s.password = rs.getString("password");
@@ -213,13 +214,10 @@ public class Staff {
 //        Staff st = new Staff();
 //        st.addStaff("Patiz", "Jongsiriwanich", "ice_za.007@hotmail.com", "hell", "fufufufufu");
 //    }
-        ArrayList<Staff> s = Staff.staffList();
+        ArrayList<Staff> s = Staff.findByName("");
 
         for (Staff staff : s) {
-            String test = staff.getFistname() + " " + staff.getLastname();
-            String srt = test.substring(0, test.indexOf(" "));
-            Staff ss = Staff.findByName2(srt);
-            System.out.println(staff.getId());
+            System.out.println(staff.getFistname());
 
         }
     }

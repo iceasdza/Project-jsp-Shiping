@@ -4,6 +4,7 @@
     Author     : patiz
 --%>
 
+<%@page import="Model.Staff"%>
 <%@page import="Model.product"%>
 <%@page import="Model.CustomersCompany"%>
 <%@page import="Model.Ships"%>
@@ -61,22 +62,28 @@
         </style>
         <style>
             #cap{
-                padding-left: 18%;
+                padding-left: 9%;
                 position: absolute;
                 visibility: hidden;
             }
             #ship{
-                padding-left: 34%;
+                padding-left: 26%;
                 position: absolute;
                 visibility: hidden;
             }
             #company2{
                 position: absolute;
-                padding-left: 50%;
+                padding-left: 42%;
                 visibility: hidden;
             }
             #product{
-                padding-left: 66%;  
+                padding-left: 58%;  
+                position: absolute;
+                top: auto;
+                visibility: hidden;
+            }
+             #staff{
+                padding-left: 75%;  
                 position: absolute;
                 top: auto;
                 visibility: hidden;
@@ -89,6 +96,8 @@
                 document.getElementById("company2").style.visibility = "hidden";
                 document.getElementById("product").style.visibility = "hidden";
                 
+                     document.getElementById("staff").style.visibility = "hidden";
+                document.getElementById("s6").style.backgroundColor = "#DCDCDC";
                 document.getElementById("s2").style.backgroundColor = "#C0C0C0";
                 document.getElementById("s3").style.backgroundColor = "#DCDCDC";
                 document.getElementById("s4").style.backgroundColor = "#DCDCDC";
@@ -100,6 +109,8 @@
                 document.getElementById("company2").style.visibility = "hidden";
                 document.getElementById("product").style.visibility = "hidden";
                 
+                     document.getElementById("staff").style.visibility = "hidden";
+                document.getElementById("s6").style.backgroundColor = "#DCDCDC";
                 document.getElementById("s3").style.backgroundColor = "#C0C0C0";
                 document.getElementById("s2").style.backgroundColor = "#DCDCDC";
                 document.getElementById("s4").style.backgroundColor = "#DCDCDC";
@@ -111,20 +122,38 @@
                 document.getElementById("company2").style.visibility = "visible";
                 document.getElementById("product").style.visibility = "hidden";
                   
+                     document.getElementById("staff").style.visibility = "hidden";
                 document.getElementById("s4").style.backgroundColor = "#C0C0C0";
                 document.getElementById("s2").style.backgroundColor = "#DCDCDC";
                 document.getElementById("s2").style.backgroundColor = "#DCDCDC";
                 document.getElementById("s5").style.backgroundColor = "#DCDCDC";
+                
+                document.getElementById("s6").style.backgroundColor = "#DCDCDC";
             }
             function myFunction4() {
                 document.getElementById("cap").style.visibility = "hidden";
                 document.getElementById("ship").style.visibility = "hidden";
                 document.getElementById("company2").style.visibility = "hidden";
                 document.getElementById("product").style.visibility = "visible";
+                     document.getElementById("staff").style.visibility = "hidden";
                 document.getElementById("s5").style.backgroundColor = "#C0C0C0";
                 document.getElementById("s3").style.backgroundColor = "#DCDCDC";
                 document.getElementById("s4").style.backgroundColor = "#DCDCDC";
                 document.getElementById("s2").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s6").style.backgroundColor = "#DCDCDC";
+                
+            }    function myFunction5() {
+                document.getElementById("cap").style.visibility = "hidden";
+                document.getElementById("ship").style.visibility = "hidden";
+                document.getElementById("company2").style.visibility = "hidden";
+                document.getElementById("product").style.visibility = "hidden";
+                document.getElementById("staff").style.visibility = "visible";
+                
+                document.getElementById("s5").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s3").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s4").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s2").style.backgroundColor = "#DCDCDC";
+                document.getElementById("s6").style.backgroundColor = "#C0C0C0";
             }
         </script>
         <style>
@@ -159,6 +188,13 @@
                 margin-right: auto;
                 left: 0;
                 right: 0; 
+            }#staffTable{
+                   visibility:hidden ${visible6};
+               position: absolute;
+                margin-left: auto;
+                margin-right: auto;
+                left: 0;
+                right: 0; 
             }
                 
         </style>
@@ -170,6 +206,7 @@
             <label id="s3" onmouseover="myFunction2()"><h3>Search Ship</h3></label>
             <label id="s4" onmouseover="myFunction3()"><h3>Search Company</h3></label>
             <label id="s5" onmouseover="myFunction4()"><h3>Search Product</h3></label>
+            <label id="s6" onmouseover="myFunction5()"><h3>Search Staff</h3></label>
         </div>
 
         <form class="form-inline" id="cap" action="searchCaptain" method="post">
@@ -186,6 +223,9 @@
 
         <form class="form-inline" id="product" action="searchProduct">
             <input class="form-control" type="text" name="name" placeholder="Search Product" > <input type="submit" class="btn btn-default">
+        </form>
+        <form class="form-inline" id="staff" action="searchStaff">
+            <input class="form-control" type="text" name="name" placeholder="Search Staff" > <input type="submit" class="btn btn-default">
         </form>
     <center>
 
@@ -345,6 +385,35 @@
 
             </tr>
             <%
+                }
+            %>
+        </table>
+        <table id="staffTable" class="table table-hover" style="width: 70%;margin-top: 50px;">
+            <%
+                  String name5 = (String) request.getAttribute("result");
+                ArrayList<Staff> staff =Staff.findByName(name5);
+                %>
+                <tr>
+                <td><b>ID</b></td>
+                <td><b>FIRST NAME</b></td>
+                <td><b>LAST NAME</b></td>
+                <td><b>EMAIL</b></td>
+                <td><b>ADDRESS</b></td>
+                <td><b>PASSWORD</b></td>
+            </tr>
+            <%
+            for (Staff st : staff) {
+                    %>
+                    <tr>
+                        <td><%=st.getId()%></td>
+                        <td><%=st.getFistname()%></td>
+                        <td><%=st.getLastname()%></td>
+                        <td><%=st.getEmail()%></td>
+                        <td><%=st.getAddress()%></td>
+                        <td><%=st.getPassword()%></td>
+                
+            </tr>
+                    <%
                 }
             %>
         </table>

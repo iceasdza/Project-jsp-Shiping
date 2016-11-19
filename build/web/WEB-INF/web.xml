@@ -72,6 +72,10 @@
         <servlet-name>searchProductServlet</servlet-name>
         <servlet-class>Servlet.searchProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>searchStaffServlet</servlet-name>
+        <servlet-class>Servlet.searchStaffServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>addShipServlet</servlet-name>
         <url-pattern>/addShip</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>searchProductServlet</servlet-name>
         <url-pattern>/searchProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchStaffServlet</servlet-name>
+        <url-pattern>/searchStaff</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
