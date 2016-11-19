@@ -67,6 +67,9 @@ public final class addTravel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>::: ADD TRAVEL :::</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
+      out.write("         ");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "header/header.jsp", out, false);
+      out.write("\n");
       out.write("        <h1 style=\"text-align: center\">::: ADD TRAVEL :::</h1>\n");
       out.write("        <form id=\"captain\"  class=\"form-horizontal\" style=\"width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: visible\" name=\"myForm\" action=\"addTravel\" method=\"post\" >\n");
       out.write("            <div class=\"form-group\">\n");
@@ -79,7 +82,7 @@ public final class addTravel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </select>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
-      out.write("<!--            <div class=\"form-group\">\n");
+      out.write("           <div class=\"form-group\">\n");
       out.write("                <label class=\"col-sm-2 control-label\" >START TIME</label>\n");
       out.write("                <div class=\"col-sm-10\">\n");
       out.write("                    <input class=\"form-control\" type=\"datetime-local\" name=\"stime\" placeholder=\"\" required=\"\">\n");
@@ -90,7 +93,7 @@ public final class addTravel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <div class=\"col-sm-10\">\n");
       out.write("                    <input class=\"form-control\" type=\"datetime-local\" name=\"ftime\" placeholder=\"\" required=\"\">\n");
       out.write("                </div>\n");
-      out.write("            </div>-->\n");
+      out.write("            </div>\n");
       out.write("            <div class=\"form-group\">\n");
       out.write("                <label class=\"col-sm-2 control-label\" >Captain</label>\n");
       out.write("                <div class=\"col-sm-10\">\n");
@@ -127,7 +130,7 @@ public final class addTravel_jsp extends org.apache.jasper.runtime.HttpJspBase
                                     
       out.write("\n");
       out.write("                                    <option>");
-      out.print(c.getShipName());
+      out.print(c.getShipsName());
       out.write("</option>>\n");
       out.write("                                    ");
 

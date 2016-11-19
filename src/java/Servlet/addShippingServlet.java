@@ -46,7 +46,7 @@ public class addShippingServlet extends HttpServlet {
                 int staffid = staff2.getId();
                 Shipping sp  = new Shipping();
                 
-                int t  = travel.currentTravelNo();
+                int t  = travel.currenttravelNo();
                 int c1 ;
                 int c2 ;
                 CustomersCompany c = CustomersCompany.findIdByName(custin);

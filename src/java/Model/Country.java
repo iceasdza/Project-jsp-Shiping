@@ -56,49 +56,52 @@ public class Country {
             pstm.setString(2, name);
             pstm.setDouble(3, time);
             pstm.executeUpdate();
+            pstm.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Country.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public static ArrayList<Country> countryList(){
-            ArrayList<Country> c = new ArrayList<>();
-            Country co;
+
+    public static ArrayList<Country> countryList() {
+        ArrayList<Country> c = new ArrayList<>();
+        Country co;
         try {
             Connection con = ConnectionBuidler.getConnection();
             PreparedStatement pstm = con.prepareStatement("select idcountry from country");
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()){ 
-                co= new Country();
+            while (rs.next()) {
+                co = new Country();
                 co.idCountry = rs.getString("idcountry");
                 c.add(co);
             }
+            pstm.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Country.class.getName()).log(Level.SEVERE, null, ex);
         }
-            return c;
+        return c;
     }
 
     public static Country findById(String id) throws SQLException {
-        Country c =null;
+        Country c = null;
         Connection con = ConnectionBuidler.getConnection();
         PreparedStatement pstm = con.prepareStatement("select * from country where lower(idCountry) like ?");
-        pstm.setString(1, "%"+id+"%");
+        pstm.setString(1, "%" + id + "%");
         ResultSet rs = pstm.executeQuery();
         while (rs.next()) {
-            c= new Country();
+            c = new Country();
             c.countryName = rs.getString("nameCountry");
             c.timeTravel = rs.getDouble("time_travel");
         }
 
+        pstm.close();
         con.close();
         return c;
     }
 
     public static void main(String[] args) throws SQLException {
-        
-        
+
 //
 //        Country cc = new Country();
 //        cc.addCountry("HK", "HONGKONG",5.00);

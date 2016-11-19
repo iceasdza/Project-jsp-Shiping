@@ -5,7 +5,7 @@
  */
 package Servlet;
 
-import Model.Shippingdetailin;
+import Model.ShippingDetailOut;
 import Model.product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,7 +41,7 @@ public class shippingOutServlet extends HttpServlet {
         int proId = p.getIdProduct();
         
         if(travelno != null && pro != null){
-            Shippingdetailin  s = new Shippingdetailin();
+            ShippingDetailOut  s = new ShippingDetailOut();
             s.addShippingDetailout(no, proId);
             request.setAttribute("success", "information has been added!");
         }else{

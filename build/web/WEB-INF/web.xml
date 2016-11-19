@@ -44,6 +44,34 @@
         <servlet-name>shippingOutServlet</servlet-name>
         <servlet-class>Servlet.shippingOutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailServlet</servlet-name>
+        <servlet-class>Servlet.DetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginServlet2</servlet-name>
+        <servlet-class>Servlet.LoginServlet2</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>Servlet.MainServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>Servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchShipServlet</servlet-name>
+        <servlet-class>Servlet.SearchShipServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchCompanyServlet</servlet-name>
+        <servlet-class>Servlet.SearchCompanyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>searchProductServlet</servlet-name>
+        <servlet-class>Servlet.searchProductServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>addShipServlet</servlet-name>
         <url-pattern>/addShip</url-pattern>
@@ -88,9 +116,40 @@
         <servlet-name>shippingOutServlet</servlet-name>
         <url-pattern>/shippingOutServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailServlet</servlet-name>
+        <url-pattern>/DetailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet2</servlet-name>
+        <url-pattern>/Login2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/Main</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchShipServlet</servlet-name>
+        <url-pattern>/SearchShip</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchCompanyServlet</servlet-name>
+        <url-pattern>/SearchCompany</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchProductServlet</servlet-name>
+        <url-pattern>/searchProduct</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

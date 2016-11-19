@@ -59,6 +59,16 @@ public final class AddInfo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>Register</title>\n");
+      out.write("        <style>\n");
+      out.write("            form{\n");
+      out.write("                position: absolute;\n");
+      out.write("                margin-left: auto;\n");
+      out.write("margin-right: auto;\n");
+      out.write("left: 0;\n");
+      out.write("right: 0;\n");
+      out.write("                \n");
+      out.write("            }\n");
+      out.write("        </style>\n");
       out.write("         <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css\">\n");
       out.write("        <script type=\"text/javascript\">\n");
       out.write("          function myFunction1() {\n");
@@ -114,6 +124,9 @@ public final class AddInfo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("     \n");
       out.write("    </head>\n");
       out.write("    <body style=\"background-color: white\">\n");
+      out.write("        ");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "header/header.jsp", out, false);
+      out.write("\n");
       out.write("        <h1 style=\"text-align: center\">::: Add information Page :::</h1>\n");
       out.write("        <h1 style=\"color: green;text-align: center\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${success}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -126,15 +139,14 @@ public final class AddInfo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</h1>\n");
       out.write("      \n");
       out.write("        <p style=\"text-align: center\">\n");
-      out.write("            <button id=\"shipbutton\" type=\"button\" class=\"btn btn-default btn-lg\" onclick=\"myFunction2()\">Add captain</button>\n");
-      out.write("            <button id=\"capbutton\" type=\"button\" class=\"btn btn-default btn-lg\" onclick=\"myFunction1()\">Add ship</button>\n");
-      out.write("            <button id=\"customerbutton\" type=\"button\" class=\"btn btn-default btn-lg\" onclick=\"myFunction3()\">Add customer</button>\n");
-      out.write("            <button id=\"Staffbutton\" type=\"button\" class=\"btn btn-default btn-lg\" onclick=\"myFunction4()\">Add Staff</button>\n");
-      out.write("            <button id=\"Productbutton\" type=\"button\" class=\"btn btn-default btn-lg\" onclick=\"myFunction5()\">Add Product</button>\n");
+      out.write("            <button id=\"shipbutton\" type=\"button\" class=\"btn btn-default btn-lg\" onmouseover=\"myFunction2()\">Add captain</button>\n");
+      out.write("            <button id=\"capbutton\" type=\"button\" class=\"btn btn-default btn-lg\" onmouseover=\"myFunction1()\">Add ship</button>\n");
+      out.write("            <button id=\"customerbutton\" type=\"button\" class=\"btn btn-default btn-lg\" onmouseover=\"myFunction3()\">Add customer</button>\n");
+      out.write("            <button id=\"Productbutton\" type=\"button\" class=\"btn btn-default btn-lg\" onmouseover=\"myFunction5()\">Add Product</button>\n");
       out.write("</p>\n");
       out.write("        \n");
-      out.write("        \n");
-      out.write("        <form id=\"captain\"  class=\"form-horizontal\" style=\"width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: visible\" name=\"myForm\" action=\"addCaptains\" method=\"post\" >\n");
+      out.write("    <center>\n");
+      out.write("        <form id=\"captain\"  class=\"form-horizontal\" style=\"width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: visible;\" name=\"myForm\" action=\"addCaptains\" method=\"post\" >\n");
       out.write("            <div class=\"form-group\">\n");
       out.write("                <label class=\"col-sm-2 control-label\" >First name</label>\n");
       out.write("                <div class=\"col-sm-10\">\n");
@@ -189,7 +201,7 @@ public final class AddInfo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("<form  action=\"addShip\" id=\"ships\"  class=\"form-horizontal\" style=\"width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: hidden\" name=\"myForm\" method=\"post\" >\n");
+      out.write("<form  action=\"addShip\" id=\"ships\"  class=\"form-horizontal\" style=\"width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;\" name=\"myForm\" method=\"post\" >\n");
       out.write("            <div class=\"form-group\">\n");
       out.write("                <label class=\"col-sm-2 control-label\" >Ship name</label>\n");
       out.write("                <div class=\"col-sm-10\">\n");
@@ -230,7 +242,7 @@ public final class AddInfo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("<form id=\"Customer\" action=\"addCustomer\" id=\"ships\"  class=\"form-horizontal\" style=\"width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: hidden\" name=\"myForm\" method=\"post\" >\n");
+      out.write("<form id=\"Customer\" action=\"addCustomer\" id=\"ships\"  class=\"form-horizontal\" style=\"width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;\" name=\"myForm\" method=\"post\" >\n");
       out.write("            <div class=\"form-group\">\n");
       out.write("                <label class=\"col-sm-2 control-label\" >Company Name</label>\n");
       out.write("                <div class=\"col-sm-10\">\n");
@@ -279,7 +291,7 @@ public final class AddInfo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("<form id=\"Staff\" action=\"addStaff\" id=\"Staff\"  class=\"form-horizontal\" style=\"width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: hidden\" name=\"myForm\" method=\"post\" >\n");
+      out.write("<form id=\"Staff\" action=\"addStaff\" id=\"Staff\"  class=\"form-horizontal\" style=\"width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;\" name=\"myForm\" method=\"post\" >\n");
       out.write("           <div class=\"form-group\">\n");
       out.write("                <label class=\"col-sm-2 control-label\" >First name</label>\n");
       out.write("                <div class=\"col-sm-10\">\n");
@@ -327,7 +339,7 @@ public final class AddInfo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    \n");
       out.write("                    \n");
       out.write("\n");
-      out.write("<form id=\"Product\" action=\"addProduct\" id=\"Staff\"  class=\"form-horizontal\" style=\"width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: hidden\" name=\"myForm\" method=\"post\" >\n");
+      out.write("<form id=\"Product\" action=\"addProduct\" id=\"Staff\"  class=\"form-horizontal\" style=\"width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;\" name=\"myForm\" method=\"post\" >\n");
       out.write("           <div class=\"form-group\">\n");
       out.write("                <label class=\"col-sm-2 control-label\" >Product name</label>\n");
       out.write("                <div class=\"col-sm-10\">\n");
@@ -380,9 +392,7 @@ public final class AddInfo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("      <button type=\"submit\" class=\"btn btn-default\">add Product</button>\n");
       out.write("    </div>\n");
       out.write("        </form>\n");
-      out.write("<a href=\"addTravel.jsp\">\n");
-      out.write("<button type=\"button\" class=\"btn btn-default\">Add Travel Page</button>\n");
-      out.write("</a>    \n");
+      out.write("                    </center>   \n");
       out.write("</body>\n");
       out.write("</html>");
     } catch (Throwable t) {

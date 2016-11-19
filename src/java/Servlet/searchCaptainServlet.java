@@ -5,8 +5,10 @@
  */
 package Servlet;
 
+import Model.Captains;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +31,15 @@ public class searchCaptainServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String name = request.getParameter("name");
+        
+        if(name!=null){
+            request.setAttribute("result", name);
+            request.setAttribute("visible","visible");
+            getServletContext().getRequestDispatcher("/SearchPage.jsp").forward(request, response);
+        }else{
+            getServletContext().getRequestDispatcher("/SearchPage.jsp").forward(request, response);
+        }
         
     }
 

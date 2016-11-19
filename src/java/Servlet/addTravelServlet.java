@@ -58,9 +58,9 @@ public class addTravelServlet extends HttpServlet {
                 request.setAttribute("custout", to);
                 
                 travel t = new travel();
-                t.addTravel(status, start, finish, capid, ss.getShipId(), from, to);
+                t.addtravel(status, start, finish, capid, ss.getShipsId(), from, to);
                 
-            getServletContext().getRequestDispatcher("/addShipping.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             }             
             
         

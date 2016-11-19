@@ -39,7 +39,7 @@ public class addShipServlet extends HttpServlet {
         
       if(shipname != null && type != null && displacement != null && expen != null){
              Ships s = new Ships();
-             s.addShipInfo(shipname, type, displace, expens);
+             s.addShipsInfo(shipname, type, displace, expens);
           
           request.setAttribute("success", "ship has been add!");
          

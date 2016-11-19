@@ -23,6 +23,7 @@
         <title>::: ADD TRAVEL :::</title>
     </head>
     <body>
+         <jsp:include page="header/header.jsp"/>
         <h1 style="text-align: center">::: ADD TRAVEL :::</h1>
         <form id="captain"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: visible" name="myForm" action="addTravel" method="post" >
             <div class="form-group">
@@ -74,7 +75,7 @@
                          ArrayList<Ships> s  = Ships.shipList();
                          for (Ships c : s) {
                                     %>
-                                    <option><%=c.getShipName()%></option>>
+                                    <option><%=c.getShipsName()%></option>>
                                     <%
                                 }
                          %>

@@ -15,6 +15,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
+        <style>
+            form{
+                position: absolute;
+                margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+                
+            }
+        </style>
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
         <script type="text/javascript">
           function myFunction1() {
@@ -70,21 +80,21 @@
      
     </head>
     <body style="background-color: white">
+        <jsp:include page="header/header.jsp"/>
         <h1 style="text-align: center">::: Add information Page :::</h1>
         <h1 style="color: green;text-align: center">${success}</h1>
         <h1 style="color: red;text-align: center">${msg}</h1>
         <h1 style="color: red;text-align: center">${repaeat}</h1>
       
         <p style="text-align: center">
-            <button id="shipbutton" type="button" class="btn btn-default btn-lg" onclick="myFunction2()">Add captain</button>
-            <button id="capbutton" type="button" class="btn btn-default btn-lg" onclick="myFunction1()">Add ship</button>
-            <button id="customerbutton" type="button" class="btn btn-default btn-lg" onclick="myFunction3()">Add customer</button>
-            <button id="Staffbutton" type="button" class="btn btn-default btn-lg" onclick="myFunction4()">Add Staff</button>
-            <button id="Productbutton" type="button" class="btn btn-default btn-lg" onclick="myFunction5()">Add Product</button>
+            <button id="shipbutton" type="button" class="btn btn-default btn-lg" onmouseover="myFunction2() ">Add captain</button>
+            <button id="capbutton" type="button" class="btn btn-default btn-lg" onmouseover="myFunction1()">Add ship</button>
+            <button id="customerbutton" type="button" class="btn btn-default btn-lg" onmouseover="myFunction3()">Add customer</button>
+            <button id="Productbutton" type="button" class="btn btn-default btn-lg" onmouseover="myFunction5()">Add Product</button>
 </p>
         
-        
-        <form id="captain"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: visible" name="myForm" action="addCaptains" method="post" >
+    <center>
+        <form id="captain"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: visible;" name="myForm" action="addCaptains" method="post" >
             <div class="form-group">
                 <label class="col-sm-2 control-label" >First name</label>
                 <div class="col-sm-10">
@@ -139,7 +149,7 @@
 
 
 
-<form  action="addShip" id="ships"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: hidden" name="myForm" method="post" >
+<form  action="addShip" id="ships"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
             <div class="form-group">
                 <label class="col-sm-2 control-label" >Ship name</label>
                 <div class="col-sm-10">
@@ -180,7 +190,7 @@
 
 
 
-<form id="Customer" action="addCustomer" id="ships"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: hidden" name="myForm" method="post" >
+<form id="Customer" action="addCustomer" id="ships"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
             <div class="form-group">
                 <label class="col-sm-2 control-label" >Company Name</label>
                 <div class="col-sm-10">
@@ -223,7 +233,7 @@
 
 
 
-<form id="Staff" action="addStaff" id="Staff"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: hidden" name="myForm" method="post" >
+<form id="Staff" action="addStaff" id="Staff"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
            <div class="form-group">
                 <label class="col-sm-2 control-label" >First name</label>
                 <div class="col-sm-10">
@@ -271,7 +281,7 @@
                     
                     
 
-<form id="Product" action="addProduct" id="Staff"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;margin-left: 300px;border-radius: 25px;border-width: 10px;position: absolute;visibility: hidden" name="myForm" method="post" >
+<form id="Product" action="addProduct" id="Staff"  class="form-horizontal" style="width: 750px;border: solid;padding: 20px;border-color: lightskyblue;margin-bottom: 50px;border-radius: 25px;border-width: 10px;visibility: hidden;" name="myForm" method="post" >
            <div class="form-group">
                 <label class="col-sm-2 control-label" >Product name</label>
                 <div class="col-sm-10">
@@ -318,8 +328,6 @@
       <button type="submit" class="btn btn-default">add Product</button>
     </div>
         </form>
-<a href="addTravel.jsp">
-<button type="button" class="btn btn-default">Add Travel Page</button>
-</a>    
+                    </center>   
 </body>
 </html>

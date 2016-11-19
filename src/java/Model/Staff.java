@@ -85,6 +85,7 @@ public class Staff {
             pstm.setString(4, addr);
             pstm.setString(5, password);
             pstm.executeUpdate();
+            pstm.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Staff.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,6 +107,7 @@ public class Staff {
                 s.add(a);
                 b = false;
             }
+            pstm.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Captains.class.getName()).log(Level.SEVERE, null, ex);
@@ -130,6 +132,7 @@ public class Staff {
                 s.password = rs.getString("password");
                 st.add(s);
             }
+            pstm.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Staff.class.getName()).log(Level.SEVERE, null, ex);
@@ -154,6 +157,7 @@ public class Staff {
                 s.password = rs.getString("password");
                 st.add(s);
             }
+            pstm.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Staff.class.getName()).log(Level.SEVERE, null, ex);
@@ -173,6 +177,7 @@ public class Staff {
                 s.id = rs.getInt("id");
                 staff.add(s);
             }
+            pstm.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(CustomersCompany.class.getName()).log(Level.SEVERE, null, ex);
@@ -196,6 +201,7 @@ public class Staff {
                 s.address = rs.getString("address");
                 s.password = rs.getString("password");
             }
+            pstm.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Staff.class.getName()).log(Level.SEVERE, null, ex);
